@@ -14,6 +14,13 @@ import { RegistroCatalogoComponent } from './components/registro-catalogo/regist
 import { RegistroEmpresasComponent } from './components/registro-empresas/registro-empresas.component';
 import { RegistroProyectoComponent } from './components/registro-proyecto/registro-proyecto.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { EstimacionServiciosComponent } from './components/estimacion-servicios/estimacion-servicios.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -26,13 +33,19 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RegistroCatalogoComponent,
     RegistroEmpresasComponent,
     RegistroProyectoComponent,
-    NavbarComponent
+    NavbarComponent,
+    EstimacionServiciosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
