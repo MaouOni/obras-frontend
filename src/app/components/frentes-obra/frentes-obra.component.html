@@ -1,0 +1,36 @@
+<h1>Registro de frentes de obra</h1>
+<form (ngSubmit)="onSubmit()" #frenteForm="ngForm">
+  <div class="form-group">
+    <label for="nombre">Nombre del frente:</label>
+    <input type="text" id="nombre" name="nombre" class="form-control" ngModel required />
+  </div>
+  <div class="form-group">
+    <label for="descripcion">Descripción del frente:</label>
+    <textarea id="descripcion" name="descripcion" class="form-control" ngModel required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="fecha_inicio">Fecha de inicio:</label>
+    <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control" ngModel required />
+  </div>
+  <div class="form-group">
+    <label for="no_contrato">Número de contrato:</label>
+    <input type="text" id="no_contrato" name="no_contrato" class="form-control" ngModel required />
+  </div>
+  <div class="form-group">
+    <label for="fecha_final">Fecha de fin:</label>
+    <input type="date" id="fecha_final" name="fecha_final" class="form-control" ngModel required />
+  </div>
+  <div class="form-group">
+    <label for="proyecto_id">Proyecto asociado:</label>
+    <select name="proyecto_id" class="form-control" ngModel required>
+      <option *ngFor="let proyecto of proyectos" [value]="proyecto.id">{{ proyecto.nombre }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="empresa_asociada">Empresa asociada:</label>
+    <select name="empresa_asociada" class="form-control" ngModel required>
+      <option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.nombre }}</option>
+    </select>
+  </div>
+  <button type="submit">Registrar frente</button>
+</form>

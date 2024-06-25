@@ -1,0 +1,30 @@
+<h1>Nombre del frente: {{ frente.nombre }}</h1>
+<form (ngSubmit)="onSubmit()" #catalogoForm="ngForm">
+  <table>
+    <tr>
+      <td><label for="clave">Clave del concepto:</label></td>
+      <td><input type="text" id="clave" name="clave" pattern="E0\d{1}-\d{3}" ngModel required /></td>
+    </tr>
+    <tr>
+      <td><label for="nombre">Nombre del concepto:</label></td>
+      <td><input type="text" id="nombre" name="nombre" maxlength="10" ngModel required /></td>
+    </tr>
+    <tr>
+      <td><label for="descripcion">Descripción:</label></td>
+      <td><textarea id="descripcion" name="descripcion" maxlength="70" ngModel required></textarea></td>
+    </tr>
+    <tr>
+      <td><label for="unidad">Unidad:</label></td>
+      <td><input type="text" id="unidad" name="unidad" maxlength="5" ngModel required /></td>
+    </tr>
+    <tr>
+      <td><label for="costo">Costo Unitario:</label></td>
+      <td><input type="number" id="costo" name="costo" step="0.01" ngModel required /></td>
+    </tr>
+    <tr>
+      <td><label for="cantidad">Cantidad:</label></td>
+      <td><input type="number" id="cantidad" name="cantidad" step="1" ngModel required /></td>
+    </tr>
+  </table>
+  <button type="submit">Registrar catálogo</button>
+</form>

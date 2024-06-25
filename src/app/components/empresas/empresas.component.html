@@ -1,0 +1,25 @@
+<h1>Empresas registradas</h1>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Razón social</th>
+      <th>RFC</th>
+      <th>Número de registro IVA</th>
+      <th>Número de registro CMIC</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let empresa of empresas">
+      <td>{{ empresa.nombre }}</td>
+      <td>{{ empresa.razon_social }}</td>
+      <td>{{ empresa.rfc }}</td>
+      <td>{{ empresa.numero_iva }}</td>
+      <td>{{ empresa.cmic }}</td>
+      <td><a [routerLink]="['/empresas/editar', empresa.id]" class="btn btn-danger btn-sm">Editar</a></td>
+    </tr>
+    </tbody>
+  </table>
+  <a routerLink="/registro/empresa" class="btn btn-outline-warning btn-sm">Registrar Empresa</a>
+</div>

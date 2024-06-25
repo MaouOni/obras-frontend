@@ -1,0 +1,85 @@
+<form (ngSubmit)="onSubmit()" #estimacionForm="ngForm">
+  <table class="table table-bordered">
+    <tr>
+      <td colspan="2">
+        <h2>NOMBRE DE LA DEPENDENCIA RESPONSABLE DEL PROYECTO DE INFRAESTRUCTURA:</h2>
+      </td>
+      <td>
+        <h2>{{ empresa.nombre }}</h2>
+      </td>
+      <td>FECHA: {{ fecha }}</td>
+    </tr>
+  </table>
+
+  <table class="table table-bordered">
+    <tr>
+      <th colspan="2" class="text-center">CONTRATO</th>
+      <th colspan="2" class="text-center">CONTRATISTA</th>
+      <th colspan="2" class="text-center">ESTIMACIÓN</th>
+    </tr>
+    <tr>
+      <td>NÚMERO DEL CONTRATO:</td>
+      <td>{{ frente.no_contrato }}</td>
+      <td>RAZÓN SOCIAL:</td>
+      <td>{{ razon_social }}</td>
+      <td>NÚMERO:</td>
+      <td>
+        <div class="form-group">
+          <input type="number" class="form-control" id="numero_estimacion" name="numero_estimacion" ngModel required />
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>FECHA DEL CONTRATO:</td>
+      <td>{{ frente.fecha_inicio }}</td>
+      <td>REGISTRO FEDERAL DE CONTRIBUYENTES (RFC):</td>
+      <td>{{ frente.empresa.rfc }}</td>
+      <td>PERIODO:</td>
+      <td>
+        <div class="form-group">
+          <label for="periodo">Periodo:</label>
+          <input type="text" class="form-control" id="periodo" name="periodo" ngModel required />
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <table class="table table-bordered">
+    <tr>
+      <th>IMPORTES SIN INCLUIR I.V.A.</th>
+      <th>IMPORTE</th>
+      <th>PORCENTAJE</th>
+    </tr>
+    <tr>
+      <td>IMPORTE DEL CONTRATO:</td>
+      <td>${{ importe_contrato }}</td>
+      <td>100.0000%</td>
+    </tr>
+    <tr>
+      <td>IMPORTE ESTIMADO ACUMULADO ANTERIOR:</td>
+      <td>${{ importe_estimado_acumulado_anterior }}</td>
+      <td>0.00000%</td>
+    </tr>
+    <tr>
+      <td>IMPORTE DE LA ESTIMACIÓN ACTUAL:</td>
+      <td>
+        <div class="form-group">
+          <input type="number" class="form-control" id="importe_estimado_actual" name="importe_estimado_actual" ngModel required />
+        </div>
+      </td>
+      <td>1.19314%</td>
+    </tr>
+    <tr>
+      <td>IMPORTE ESTIMADO ACUMULADO ACTUAL:</td>
+      <td>${{ importe_estimado_acum_actual }}</td>
+      <td>1.19314%</td>
+    </tr>
+    <tr>
+      <td>SALDO POR ESTIMAR</td>
+      <td>${{ saldo_por_estimar }}</td>
+      <td>98.8069%</td>
+    </tr>
+  </table>
+  <button type="submit">Registrar Estimación</button>
+</form>
+<a [routerLink]="['/estimacion_servicios', proyecto.id, frente.id]" class="btn btn-primary">Agregar la Estimación de Servicios Ejecutados</a>
