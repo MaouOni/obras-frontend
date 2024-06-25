@@ -7,10 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./formulario-proyecto.component.css']
 })
 export class FormularioProyectoComponent {
-
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   navigateTo(path: string) {
-    this.router.navigate([path]);
+    this.router.navigate([`/${path}`]);
   }
 }

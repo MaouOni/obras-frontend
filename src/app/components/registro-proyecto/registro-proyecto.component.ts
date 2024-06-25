@@ -6,8 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./registro-proyecto.component.css']
 })
 export class RegistroProyectoComponent {
-
   onSubmit() {
-    // Handle form submission
+    // Logic for form submission
   }
 }

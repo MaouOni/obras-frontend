@@ -6,8 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./registro-empresas.component.css']
 })
 export class RegistroEmpresasComponent {
-
   onSubmit() {
-    // Handle form submission
+    // Logic for form submission
   }
 }

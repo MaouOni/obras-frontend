@@ -2,11 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-proyecto-detail',
-  standalone: true,
-  imports: [],
   templateUrl: './proyecto-detail.component.html',
-  styleUrl: './proyecto-detail.component.css'
+  styleUrls: ['./proyecto-detail.component.css'] // use styleUrls instead of styleUrl
 })
-export class ProyectoDetailComponent {
-
-}
+export class ProyectoDetailComponent { }

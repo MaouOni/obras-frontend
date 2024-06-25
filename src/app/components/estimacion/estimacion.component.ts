@@ -1,29 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-estimacion',
   templateUrl: './estimacion.component.html',
   styleUrls: ['./estimacion.component.css']
 })
-export class EstimacionComponent implements OnInit {
-  empresa: any = {};
-  fecha: Date = new Date();
-  frente: any = {};
-  razon_social: string = '';
-  importe_contrato: number = 0;
-  importe_estimado_acumulado_anterior: number = 0;
-  importe_estimado_acum_actual: number = 0;
-  saldo_por_estimar: number = 0;
-  proyecto: any = {};
-
-  constructor(private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    // Load data here if needed
-  }
+export class EstimacionComponent {
+  empresa = { nombre: '' };
+  frente = { no_contrato: '', fecha_inicio: '', empresa: { rfc: '' } };
+  razon_social = '';
+  importe_contrato = 0;
+  importe_estimado_acumulado_anterior = 0;
+  importe_estimado_acum_actual = 0;
+  saldo_por_estimar = 0;
+  fecha = new Date();
 
   onSubmit() {
-    // Handle form submission
+    // Logic for form submission
   }
 }

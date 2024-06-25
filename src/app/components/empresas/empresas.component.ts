@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Empresa } from '../../models/empresa';
 import { EmpresaService } from '../../services/empresa.service';
+import { Empresa } from '../../models/empresa';
 
 @Component({
   selector: 'app-empresas',
@@ -10,11 +10,15 @@ import { EmpresaService } from '../../services/empresa.service';
 export class EmpresasComponent implements OnInit {
   empresas: Empresa[] = [];
 
-  constructor(private empresaService: EmpresaService) { }
+  constructor(private empresaService: EmpresaService) {}
 
   ngOnInit(): void {
-    this.empresaService.getEmpresas().subscribe((data: Empresa[]) => {
+    this.empresaService.getEmpresas().subscribe(data => {
       this.empresas = data;
     });
+  }
+
+  editEmpresa(id: number): void {
+    // Logic to edit empresa
   }
 }
