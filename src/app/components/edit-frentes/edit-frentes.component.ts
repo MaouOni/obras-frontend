@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Frente } from '../../models/frente.model';
 import { FrenteService } from '../../services/frente.service';
-import { ProyectoService } from '../../services/proyecto.service';
-import { EmpresaService } from '../../services/empresa.service';
-import { Frente } from '../../models/frente';
-import { Proyecto } from '../../models/proyecto';
-import { Empresa } from '../../models/empresa';
 
 @Component({
   selector: 'app-edit-frentes',
@@ -14,27 +10,32 @@ import { Empresa } from '../../models/empresa';
 })
 export class EditFrentesComponent implements OnInit {
   frente: Frente = new Frente();
-  proyectos: Proyecto[] = [];
-  empresas: Empresa[] = [];
 
   constructor(
-    private route: ActivatedRoute,
     private frenteService: FrenteService,
-    private proyectoService: ProyectoService,
-    private empresaService: EmpresaService
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.frenteService.getFrenteById(id).subscribe(frente => this.frente = frente);
-    this.proyectoService.getProyectos().subscribe(proyectos => this.proyectos = proyectos);
-    this.empresaService.getEmpresas().subscribe(empresas => this.empresas = empresas);
+    if (id !== null) {
+      this.frenteService.getFrenteById(+id).subscribe((frente: Frente) => {
+        this.frente = frente;
+      });
+    } else {
+      console.error('ID parameter is null');
+    }
   }
 
-  onSubmit() {
-    this.frenteService.updateFrente(this.frente).subscribe(response => {
-      console.log('Frente actualizado', response);
-      // Handle the response, navigate, etc.
-    });
+  onSubmit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id !== null) {
+      this.frenteService.updateFrente(+id, this.frente).subscribe(response => {
+        this.router.navigate(['/frentes']);
+      });
+    } else {
+      console.error('ID parameter is null');
+    }
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Frente } from '../../models/frente.model';
 import { FrenteService } from '../../services/frente.service';
-import { Frente } from '../../models/frente';
 
 @Component({
   selector: 'app-frente-detail',
@@ -9,15 +9,17 @@ import { Frente } from '../../models/frente';
   styleUrls: ['./frente-detail.component.css']
 })
 export class FrenteDetailComponent implements OnInit {
-  frente: Frente;
+  frente: Frente = new Frente();  // Initialize the frente property
 
   constructor(
-    private route: ActivatedRoute,
-    private frenteService: FrenteService
+    private frenteService: FrenteService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.frenteService.getFrenteById(id).subscribe(frente => this.frente = frente);
+    const id = +this.route.snapshot.paramMap.get('id')!; // Add non-null assertion operator
+    this.frenteService.getFrenteById(id).subscribe((frente: Frente) => {
+      this.frente = frente;
+    });
   }
 }

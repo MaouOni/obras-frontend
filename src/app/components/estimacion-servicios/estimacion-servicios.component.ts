@@ -1,18 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-
-interface Servicio {
-  clave: string;
-  concepto: string;
-  unidad: string;
-  segunProyecto: number;
-  hastaEstimacionAnterior: number;
-  deEstaEstimacion: number;
-  totalEstimado: number;
-  porEjecutar: number;
-  precioUnitario: number;
-  importe: number;
-}
+import { Estimacion } from '../../models/estimacion.model';
+import { EstimacionService } from '../../services/estimacion.service';
 
 @Component({
   selector: 'app-estimacion-servicios',
@@ -20,42 +9,20 @@ interface Servicio {
   styleUrls: ['./estimacion-servicios.component.css']
 })
 export class EstimacionServiciosComponent implements OnInit {
-  searchQuery: string = '';
-  displayedColumns: string[] = ['clave', 'concepto', 'unidad', 'segunProyecto', 'hastaEstimacionAnterior', 'deEstaEstimacion', 'totalEstimado', 'porEjecutar', 'precioUnitario', 'importe'];
-  dataSource = new MatTableDataSource<Servicio>();
-  data: Servicio[] = [
-    // Add initial data if needed
-  ];
-  filteredData: MatTableDataSource<Servicio>;
+  dataSource: MatTableDataSource<Estimacion> = new MatTableDataSource<Estimacion>();
+  filteredData: MatTableDataSource<Estimacion> = new MatTableDataSource<Estimacion>();
 
-  ngOnInit() {
-    this.filteredData = new MatTableDataSource(this.data);
+  constructor(private estimacionService: EstimacionService) { }
+
+  ngOnInit(): void {
+    this.estimacionService.getEstimaciones().subscribe((servicios: Estimacion[]) => {
+      this.dataSource = new MatTableDataSource(servicios);
+      this.filteredData = new MatTableDataSource(servicios);
+    });
   }
 
-  search() {
-    this.filteredData.filter = this.searchQuery.trim().toLowerCase();
-  }
-
-  showAll() {
-    this.searchQuery = '';
-    this.filteredData.filter = '';
-  }
-
-  addRow() {
-    const newRow: Servicio = {
-      clave: '', concepto: '', unidad: '', segunProyecto: 0, hastaEstimacionAnterior: 0, deEstaEstimacion: 0,
-      totalEstimado: 0, porEjecutar: 0, precioUnitario: 0, importe: 0
-    };
-    this.data.push(newRow);
-    this.filteredData = new MatTableDataSource(this.data);
-  }
-
-  removeRow() {
-    this.data.pop();
-    this.filteredData = new MatTableDataSource(this.data);
-  }
-
-  get totalImporte(): number {
-    return this.data.reduce((acc, curr) => acc + curr.importe, 0);
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.filteredData.filter = filterValue.trim().toLowerCase();
   }
 }

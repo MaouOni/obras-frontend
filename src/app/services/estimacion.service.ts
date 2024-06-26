@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Estimacion } from '../models/estimacion.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,15 @@ export class EstimacionService {
 
   constructor(private http: HttpClient) { }
 
-  getEstimaciones(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  getEstimaciones(): Observable<Estimacion[]> {
+    return this.http.get<Estimacion[]>(this.apiUrl);
   }
 
-  getEstimacion(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  getEstimacion(id: number): Observable<Estimacion> {
+    return this.http.get<Estimacion>(`${this.apiUrl}/${id}`);
   }
 
-  createEstimacion(estimacion: any): Observable<any> {
-    return this.http.post(this.apiUrl, estimacion);
+  createEstimacion(estimacion: Estimacion): Observable<Estimacion> {
+    return this.http.post<Estimacion>(this.apiUrl, estimacion);
   }
 }

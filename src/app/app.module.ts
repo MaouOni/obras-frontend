@@ -26,12 +26,14 @@ import { EditFrentesComponent } from './components/edit-frentes/edit-frentes.com
 import { EditProyectosComponent } from './components/edit-proyectos/edit-proyectos.component';
 import { FrenteDetailComponent } from './components/frente-detail/frente-detail.component';
 import { IndexComponent } from './components/index/index.component';
+import { BaseComponent } from './components/base/base.component';
 
 import { CatalogoService } from './services/catalogo.service';
 import { EmpresaService } from './services/empresa.service';
 import {ProyectoService} from "./services/proyecto.service";
 import {EstimacionService} from "./services/estimacion.service";
-import { BaseComponent } from './components/base/base.component';
+import { FrenteService } from "./services/frente.service";
+import {ProyectoDetailComponent} from "./components/proyecto-detail/proyecto-detail.component";
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { BaseComponent } from './components/base/base.component';
     FormularioProyectoComponent,
     FrentesObraComponent,
     ProyectosComponent,
+    ProyectoDetailComponent,
     RegistroCatalogoComponent,
     RegistroEmpresasComponent,
     RegistroProyectoComponent,
@@ -64,7 +67,7 @@ import { BaseComponent } from './components/base/base.component';
     MatButtonModule,
     MatIconModule,
   ],
-  providers: [ProyectoService, EstimacionService, CatalogoService, EmpresaService],
+  providers: [ProyectoService, EstimacionService, CatalogoService, EmpresaService, FrenteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Empresa } from '../../models/empresa.model';
 import { EmpresaService } from '../../services/empresa.service';
-import { Empresa } from '../../models/empresa';
 
 @Component({
   selector: 'app-edit-empresas',
@@ -12,19 +12,30 @@ export class EditEmpresasComponent implements OnInit {
   empresa: Empresa = new Empresa();
 
   constructor(
+    private empresaService: EmpresaService,
     private route: ActivatedRoute,
-    private empresaService: EmpresaService
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.empresaService.getEmpresaById(id).subscribe(empresa => this.empresa = empresa);
+    if (id !== null) {
+      this.empresaService.getEmpresaById(+id).subscribe((empresa: Empresa) => {
+        this.empresa = empresa;
+      });
+    } else {
+      console.error('ID parameter is null');
+    }
   }
 
-  onSubmit() {
-    this.empresaService.updateEmpresa(this.empresa).subscribe(response => {
-      console.log('Empresa actualizada', response);
-      // Handle the response, navigate, etc.
-    });
+  onSubmit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id !== null) {
+      this.empresaService.updateEmpresa(+id, this.empresa).subscribe(response => {
+        this.router.navigate(['/empresas']);
+      });
+    } else {
+      console.error('ID parameter is null');
+    }
   }
 }
