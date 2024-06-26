@@ -2,10 +2,12 @@
   <table class="table table-bordered">
     <tr>
       <td colspan="2">
-        <h2>NOMBRE DE LA DEPENDENCIA RESPONSABLE DEL PROYECTO DE INFRAESTRUCTURA:</h2>
+        <h2>
+          NOMBRE DE LA DEPENDENCIA RESPONSABLE DEL PROYECTO DE INFRAESTRUCTURA:
+        </h2>
       </td>
       <td>
-        <h2>{{ empresa.nombre }}</h2>
+        <h2>{{ frente.empresa.nombre }}</h2>
       </td>
       <td>FECHA: {{ fecha }}</td>
     </tr>
@@ -25,7 +27,14 @@
       <td>NÚMERO:</td>
       <td>
         <div class="form-group">
-          <input type="number" class="form-control" id="numero_estimacion" name="numero_estimacion" ngModel required />
+          <input
+            type="number"
+            class="form-control"
+            id="numero_estimacion"
+            name="numero_estimacion"
+            ngModel
+            required
+          />
         </div>
       </td>
     </tr>
@@ -37,8 +46,15 @@
       <td>PERIODO:</td>
       <td>
         <div class="form-group">
-          <label for="periodo">Periodo:</label>
-          <input type="text" class="form-control" id="periodo" name="periodo" ngModel required />
+          <label for="periodo">periodo:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="periodo"
+            name="periodo"
+            ngModel
+            required
+          />
         </div>
       </td>
     </tr>
@@ -64,7 +80,14 @@
       <td>IMPORTE DE LA ESTIMACIÓN ACTUAL:</td>
       <td>
         <div class="form-group">
-          <input type="number" class="form-control" id="importe_estimado_actual" name="importe_estimado_actual" ngModel required />
+          <input
+            type="number"
+            class="form-control"
+            id="importe_estimado_actual"
+            name="importe_estimado_actual"
+            ngModel
+            required
+          />
         </div>
       </td>
       <td>1.19314%</td>

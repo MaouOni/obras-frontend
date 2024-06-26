@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpresaService } from '../../services/empresa.service';
-import { Empresa } from '../../models/empresa';
 
 @Component({
   selector: 'app-empresas',
@@ -8,17 +7,17 @@ import { Empresa } from '../../models/empresa';
   styleUrls: ['./empresas.component.css']
 })
 export class EmpresasComponent implements OnInit {
-  empresas: Empresa[] = [];
+  empresas: any[] = [];
 
-  constructor(private empresaService: EmpresaService) {}
+  constructor(private empresaService: EmpresaService) { }
 
   ngOnInit(): void {
-    this.empresaService.getEmpresas().subscribe(data => {
-      this.empresas = data;
-    });
+    this.getEmpresas();
   }
 
-  editEmpresa(id: number): void {
-    // Logic to edit empresa
+  getEmpresas(): void {
+    this.empresaService.getEmpresas().subscribe((data: any[]) => {
+      this.empresas = data;
+    });
   }
 }

@@ -1,24 +1,30 @@
 <h1>Registro Empresas Asociadas</h1>
+
 <form (ngSubmit)="onSubmit()" #empresaForm="ngForm">
   <div class="form-group">
     <label for="nombre">Nombre de la empresa:</label>
-    <input type="text" id="nombre" name="nombre" class="form-control" ngModel required />
+    <input type="text" id="nombre" name="nombre" class="form-control" ngModel required>
   </div>
+
   <div class="form-group">
     <label for="razon">Razón Social:</label>
-    <input type="text" id="razon" name="razon" class="form-control" ngModel required />
+    <input type="text" id="razon" name="razon" class="form-control" ngModel required>
   </div>
+
   <div class="form-group">
     <label for="rfc">Registro Federal de Contribuyentes:</label>
-    <input type="text" id="rfc" name="rfc" class="form-control" ngModel required />
+    <input type="text" id="rfc" name="rfc" class="form-control" ngModel required>
   </div>
+
   <div class="form-group">
     <label for="no_iva">Número de Registro IVA:</label>
-    <input type="text" id="no_iva" name="no_iva" class="form-control" ngModel required />
+    <input type="text" id="no_iva" name="no_iva" class="form-control" ngModel required>
   </div>
+
   <div class="form-group">
     <label for="cmic">Número de registro CMIC:</label>
-    <input type="text" id="cmic" name="cmic" class="form-control" ngModel required />
+    <input type="text" id="cmic" name="cmic" class="form-control" ngModel required>
   </div>
+
   <button type="submit">Registrar empresa</button>
 </form>

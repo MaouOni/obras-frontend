@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProyectoService } from '../../services/proyecto.service';
-import { Proyecto } from '../../models/proyecto';
+import { ProyectoService } from 'src/app/services/proyecto.service';
 
 @Component({
   selector: 'app-proyectos',
@@ -8,25 +7,25 @@ import { Proyecto } from '../../models/proyecto';
   styleUrls: ['./proyectos.component.css']
 })
 export class ProyectosComponent implements OnInit {
-  proyectos: Proyecto[] = [];
+  proyectos: any[] = [];
 
-  constructor(private proyectoService: ProyectoService) {}
+  constructor(private proyectoService: ProyectoService) { }
 
   ngOnInit(): void {
+    this.loadProyectos();
+  }
+
+  loadProyectos(): void {
     this.proyectoService.getProyectos().subscribe(data => {
       this.proyectos = data;
     });
   }
 
   deleteProyecto(id: number): void {
-    // Logic to delete proyecto
-  }
-
-  detallesProyecto(id: number): void {
-    // Logic to navigate to project details
-  }
-
-  editarProyecto(id: number): void {
-    // Logic to navigate to edit project
+    if (confirm('¿Estás seguro de que deseas eliminar este proyecto?')) {
+      this.proyectoService.deleteProyecto(id).subscribe(() => {
+        this.loadProyectos(); // Refresh the list after deletion
+      });
+    }
   }
 }

@@ -13,8 +13,8 @@
     <tr *ngFor="let proyecto of proyectos">
       <td>{{ proyecto.nombre }}</td>
       <td>{{ proyecto.descripcion }}</td>
-      <td>{{ proyecto.fecha_inicio | date }}</td>
-      <td>{{ proyecto.fecha_final | date }}</td>
+      <td>{{ proyecto.fecha_inicio }}</td>
+      <td>{{ proyecto.fecha_final }}</td>
       <td><a [routerLink]="['/proyecto/detalles', proyecto.id]" class="btn btn-outline-warning btn-sm">Detalles</a></td>
       <td><a [routerLink]="['/proyecto/editar', proyecto.id]" class="btn btn-danger btn-sm">Editar</a></td>
       <td><button (click)="deleteProyecto(proyecto.id)" class="btn btn-danger btn-sm">Eliminar</button></td>

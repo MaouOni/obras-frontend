@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProyectoService } from 'src/app/services/proyecto.service';
 
 @Component({
   selector: 'app-registro-proyecto',
@@ -6,7 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./registro-proyecto.component.css']
 })
 export class RegistroProyectoComponent {
-  onSubmit() {
-    // Logic for form submission
+  constructor(
+    private proyectoService: ProyectoService,
+    private router: Router
+  ) {}
+
+  onSubmit(): void {
+    // Handle form submission
+    this.proyectoService.createProyecto().subscribe(() => {
+      this.router.navigate(['/proyectos']); // Adjust the route as needed
+    });
   }
 }

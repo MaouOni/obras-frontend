@@ -21,6 +21,17 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { EditEmpresasComponent } from './components/edit-empresas/edit-empresas.component';
+import { EditFrentesComponent } from './components/edit-frentes/edit-frentes.component';
+import { EditProyectosComponent } from './components/edit-proyectos/edit-proyectos.component';
+import { FrenteDetailComponent } from './components/frente-detail/frente-detail.component';
+import { IndexComponent } from './components/index/index.component';
+
+import { CatalogoService } from './services/catalogo.service';
+import { EmpresaService } from './services/empresa.service';
+import {ProyectoService} from "./services/proyecto.service";
+import {EstimacionService} from "./services/estimacion.service";
+import { BaseComponent } from './components/base/base.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +45,13 @@ import { MatIconModule } from '@angular/material/icon';
     RegistroEmpresasComponent,
     RegistroProyectoComponent,
     NavbarComponent,
-    EstimacionServiciosComponent
+    EstimacionServiciosComponent,
+    EditEmpresasComponent,
+    EditFrentesComponent,
+    EditProyectosComponent,
+    FrenteDetailComponent,
+    IndexComponent,
+    BaseComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +64,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [ProyectoService, EstimacionService, CatalogoService, EmpresaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

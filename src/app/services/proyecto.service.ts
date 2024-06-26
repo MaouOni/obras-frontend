@@ -11,6 +11,10 @@ export class ProyectoService {
 
   constructor(private http: HttpClient) { }
 
+  createProyecto(): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/create`, {});
+  }
+
   getProyectos(): Observable<Proyecto[]> {
     return this.http.get<Proyecto[]>(this.apiUrl);
   }

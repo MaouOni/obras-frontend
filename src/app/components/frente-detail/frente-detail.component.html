@@ -1,0 +1,36 @@
+<h1>{{ frente.nombre }}</h1>
+<p>{{ frente.descripcion }}</p>
+<p>Fecha de inicio: {{ frente.fecha_inicio }}</p>
+<p>Fecha final: {{ frente.fecha_final }}</p>
+<p>Número de contrato: {{ frente.no_contrato }}</p>
+<p>Proyecto asociado: {{ frente.proyecto.nombre }}</p>
+<p>Empresa asociada: {{ frente.empresa.nombre }}</p>
+
+<h2>Catálogo de Conceptos</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Clave</th>
+    <th>Nombre</th>
+    <th>Descripción</th>
+    <th>Unidad</th>
+    <th>Costo Unitario</th>
+    <th>Cantidad</th>
+    <th>Importe</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let concepto of frente.catalogos_relacionados">
+    <td>{{ concepto.clave }}</td>
+    <td>{{ concepto.nombre }}</td>
+    <td>{{ concepto.descripcion }}</td>
+    <td>{{ concepto.unidad }}</td>
+    <td>{{ concepto.costo_unitario }}</td>
+    <td>{{ concepto.cantidad }}</td>
+    <td>{{ concepto.importe }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<a [routerLink]="['/registro/catalogo', frente.id]" class="btn btn-primary">Editar Catálogo de Conceptos</a>
+<a [routerLink]="['/proyecto', frente.proyecto.id, 'frente', frente.id, 'estimacion']" class="btn btn-outline-success">Estimación</a>

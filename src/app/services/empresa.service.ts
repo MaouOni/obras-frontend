@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Empresa } from '../models/empresa';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +10,18 @@ export class EmpresaService {
 
   constructor(private http: HttpClient) { }
 
-  getEmpresas(): Observable<Empresa[]> {
-    return this.http.get<Empresa[]>(this.apiUrl);
+  createEmpresa(): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/create`, {});
+  }
+  getEmpresas(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 
-  addEmpresa(empresa: Empresa): Observable<Empresa> {
-    return this.http.post<Empresa>(this.apiUrl, empresa);
+  getEmpresa(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
-  getEmpresaById(id: number): Observable<Empresa> {
-    return this.http.get<Empresa>(`${this.apiUrl}/${id}`);
-  }
-
-  updateEmpresa(id: number, empresa: Empresa): Observable<Empresa> {
-    return this.http.put<Empresa>(`${this.apiUrl}/${id}`, empresa);
-  }
-
-  deleteEmpresa(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  updateEmpresa(id: number, empresa: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, empresa);
   }
 }

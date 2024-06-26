@@ -1,65 +1,54 @@
 <h1>Estimación de Servicios Ejecutados</h1>
-<br>
 <div>
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Búsqueda">
-  </mat-form-field>
+  <label for="searchInput">Búsqueda:</label>
+  <input matInput [(ngModel)]="searchQuery" placeholder="Search">
+  <button mat-raised-button color="primary" (click)="search()">Buscar</button>
+  <button mat-raised-button color="primary" (click)="showAll()">Mostrar todo</button>
   <button mat-raised-button color="primary" (click)="addRow()">+</button>
   <button mat-raised-button color="primary" (click)="removeRow()">-</button>
 </div>
 <br>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
+<table mat-table [dataSource]="filteredData" class="mat-elevation-z8">
   <ng-container matColumnDef="clave">
     <th mat-header-cell *matHeaderCellDef> Clave Con. </th>
     <td mat-cell *matCellDef="let element"> {{element.clave}} </td>
   </ng-container>
-
   <ng-container matColumnDef="concepto">
     <th mat-header-cell *matHeaderCellDef> Concepto de Obra </th>
     <td mat-cell *matCellDef="let element"> {{element.concepto}} </td>
   </ng-container>
-
   <ng-container matColumnDef="unidad">
     <th mat-header-cell *matHeaderCellDef> Unidad </th>
     <td mat-cell *matCellDef="let element"> {{element.unidad}} </td>
   </ng-container>
-
   <ng-container matColumnDef="segunProyecto">
     <th mat-header-cell *matHeaderCellDef> Según Proyecto </th>
     <td mat-cell *matCellDef="let element"> {{element.segunProyecto}} </td>
   </ng-container>
-
   <ng-container matColumnDef="hastaEstimacionAnterior">
     <th mat-header-cell *matHeaderCellDef> Hasta Estimación Anterior </th>
     <td mat-cell *matCellDef="let element"> {{element.hastaEstimacionAnterior}} </td>
   </ng-container>
-
   <ng-container matColumnDef="deEstaEstimacion">
     <th mat-header-cell *matHeaderCellDef> De Esta Estimación </th>
     <td mat-cell *matCellDef="let element"> {{element.deEstaEstimacion}} </td>
   </ng-container>
-
   <ng-container matColumnDef="totalEstimado">
     <th mat-header-cell *matHeaderCellDef> Total Estimado </th>
     <td mat-cell *matCellDef="let element"> {{element.totalEstimado}} </td>
   </ng-container>
-
   <ng-container matColumnDef="porEjecutar">
     <th mat-header-cell *matHeaderCellDef> Por Ejecutar </th>
     <td mat-cell *matCellDef="let element"> {{element.porEjecutar}} </td>
   </ng-container>
-
   <ng-container matColumnDef="precioUnitario">
     <th mat-header-cell *matHeaderCellDef> Precio Unitario </th>
     <td mat-cell *matCellDef="let element"> {{element.precioUnitario}} </td>
   </ng-container>
-
   <ng-container matColumnDef="importe">
     <th mat-header-cell *matHeaderCellDef> Importe </th>
     <td mat-cell *matCellDef="let element"> {{element.importe}} </td>
   </ng-container>
-
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

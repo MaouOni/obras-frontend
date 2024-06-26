@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
-export interface EstimationElement {
+interface Servicio {
   clave: string;
   concepto: string;
   unidad: string;
@@ -20,51 +20,42 @@ export interface EstimationElement {
   styleUrls: ['./estimacion-servicios.component.css']
 })
 export class EstimacionServiciosComponent implements OnInit {
-  displayedColumns: string[] = [
-    'clave', 'concepto', 'unidad', 'segunProyecto', 'hastaEstimacionAnterior',
-    'deEstaEstimacion', 'totalEstimado', 'porEjecutar', 'precioUnitario', 'importe'
+  searchQuery: string = '';
+  displayedColumns: string[] = ['clave', 'concepto', 'unidad', 'segunProyecto', 'hastaEstimacionAnterior', 'deEstaEstimacion', 'totalEstimado', 'porEjecutar', 'precioUnitario', 'importe'];
+  dataSource = new MatTableDataSource<Servicio>();
+  data: Servicio[] = [
+    // Add initial data if needed
   ];
-  dataSource = new MatTableDataSource<EstimationElement>(ELEMENT_DATA);
+  filteredData: MatTableDataSource<Servicio>;
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.calculateTotalImporte();
+  ngOnInit() {
+    this.filteredData = new MatTableDataSource(this.data);
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  search() {
+    this.filteredData.filter = this.searchQuery.trim().toLowerCase();
+  }
+
+  showAll() {
+    this.searchQuery = '';
+    this.filteredData.filter = '';
   }
 
   addRow() {
-    const newRow: EstimationElement = {
-      clave: '', concepto: '', unidad: '', segunProyecto: 0, hastaEstimacionAnterior: 0,
-      deEstaEstimacion: 0, totalEstimado: 0, porEjecutar: 0, precioUnitario: 0, importe: 0
+    const newRow: Servicio = {
+      clave: '', concepto: '', unidad: '', segunProyecto: 0, hastaEstimacionAnterior: 0, deEstaEstimacion: 0,
+      totalEstimado: 0, porEjecutar: 0, precioUnitario: 0, importe: 0
     };
-    this.dataSource.data = [...this.dataSource.data, newRow];
-    this.calculateTotalImporte();
+    this.data.push(newRow);
+    this.filteredData = new MatTableDataSource(this.data);
   }
 
   removeRow() {
-    this.dataSource.data.pop();
-    this.dataSource._updateChangeSubscription(); // Refresh the dataSource
-    this.calculateTotalImporte();
+    this.data.pop();
+    this.filteredData = new MatTableDataSource(this.data);
   }
 
-  calculateTotalImporte() {
-    let total = 0;
-    this.dataSource.data.forEach(row => {
-      row.totalEstimado = row.hastaEstimacionAnterior + row.deEstaEstimacion;
-      row.porEjecutar = row.segunProyecto - row.totalEstimado;
-      row.importe = row.deEstaEstimacion * row.precioUnitario;
-      total += row.importe;
-    });
-    return total;
+  get totalImporte(): number {
+    return this.data.reduce((acc, curr) => acc + curr.importe, 0);
   }
 }
-
-const ELEMENT_DATA: EstimationElement[] = [
-  { clave: '', concepto: '', unidad: '', segunProyecto: 0, hastaEstimacionAnterior: 0,
-    deEstaEstimacion: 0, totalEstimado: 0, porEjecutar: 0, precioUnitario: 0, importe: 0 }
-];
