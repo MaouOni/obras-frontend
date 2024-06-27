@@ -9,7 +9,7 @@ import { Frente } from '../models/frente.model';
 export class FrenteService {
   private apiUrl = 'http://localhost:3000/api/frentes';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getFrentes(): Observable<Frente[]> {
     return this.http.get<Frente[]>(this.apiUrl);

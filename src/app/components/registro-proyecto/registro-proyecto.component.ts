@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProyectoService } from 'src/app/services/proyecto.service';
+import { Proyecto } from 'src/app/models/proyecto.model';
 
 @Component({
   selector: 'app-registro-proyecto',
@@ -8,6 +9,8 @@ import { ProyectoService } from 'src/app/services/proyecto.service';
   styleUrls: ['./registro-proyecto.component.css']
 })
 export class RegistroProyectoComponent {
+  proyecto: Proyecto = new Proyecto();
+
   constructor(
     private proyectoService: ProyectoService,
     private router: Router
@@ -15,8 +18,8 @@ export class RegistroProyectoComponent {
 
   onSubmit(): void {
     // Handle form submission
-    this.proyectoService.createProyecto().subscribe(() => {
-      this.router.navigate(['/proyectos']); // Adjust the route as needed
+    this.proyectoService.createProyecto(this.proyecto).subscribe(() => {
+      this.router.navigate(['/proyectos']);
     });
   }
 }

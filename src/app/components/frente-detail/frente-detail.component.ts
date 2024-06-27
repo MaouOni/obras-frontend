@@ -9,15 +9,15 @@ import { FrenteService } from '../../services/frente.service';
   styleUrls: ['./frente-detail.component.css']
 })
 export class FrenteDetailComponent implements OnInit {
-  frente: Frente = new Frente();  // Initialize the frente property
+  frente: Frente = new Frente();
 
   constructor(
     private frenteService: FrenteService,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id')!; // Add non-null assertion operator
+    const id = +this.route.snapshot.paramMap.get('id')!;
     this.frenteService.getFrenteById(id).subscribe((frente: Frente) => {
       this.frente = frente;
     });

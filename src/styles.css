@@ -1,4 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+/* navbar.component.css or global styles.css */
+.navbar {
+  padding: 10px 20px; /* Adjust the padding as needed */
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* app.component.css or global styles.css */
+.content {
+  padding: 20px 40px; /* Adjust the padding as needed */
+}

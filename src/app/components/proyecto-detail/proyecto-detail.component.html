@@ -1,7 +1,7 @@
 <h1>{{ proyecto.nombre }}</h1>
 <p>{{ proyecto.descripcion }}</p>
-<p>Fecha de inicio: {{ proyecto.fecha_inicio }}</p>
-<p>Fecha final: {{ proyecto.fecha_final }}</p>
+<p>Fecha de inicio: {{ proyecto.fecha_inicio | date }}</p>
+<p>Fecha final: {{ proyecto.fecha_final | date }}</p>
 
 <h2>Frentes de obra</h2>
 <ul>
@@ -11,4 +11,4 @@
   </li>
 </ul>
 
-<a routerLink="/registro/frentes" class="btn btn-primary">Agregar frente de obra</a>
+<a routerLink="/frentes" class="btn btn-primary">Agregar frente de obra</a>

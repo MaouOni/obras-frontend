@@ -9,7 +9,7 @@ import { ProyectoService } from '../../services/proyecto.service';
   styleUrls: ['./proyecto-detail.component.css']
 })
 export class ProyectoDetailComponent implements OnInit {
-  proyecto: Proyecto = new Proyecto();  // Initialize the proyecto property
+  proyecto: Proyecto = new Proyecto();
 
   constructor(
     private proyectoService: ProyectoService,

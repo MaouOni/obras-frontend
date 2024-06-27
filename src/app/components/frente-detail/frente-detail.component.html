@@ -1,10 +1,10 @@
 <h1>{{ frente.nombre }}</h1>
 <p>{{ frente.descripcion }}</p>
-<p>Fecha de inicio: {{ frente.fecha_inicio }}</p>
-<p>Fecha final: {{ frente.fecha_final }}</p>
+<p>Fecha de inicio: {{ frente.fecha_inicio | date: 'shortDate' }}</p>
+<p>Fecha final: {{ frente.fecha_final | date: 'shortDate' }}</p>
 <p>Número de contrato: {{ frente.no_contrato }}</p>
-<p>Proyecto asociado: {{ frente.proyecto.nombre }}</p>
-<p>Empresa asociada: {{ frente.empresa.nombre }}</p>
+<p>Proyecto asociado: <a [routerLink]="['/proyecto/detalles', frente.proyecto.id]">{{ frente.proyecto.nombre }}</a></p>
+<p>Empresa asociada: <a [routerLink]="['/empresas/editar', frente.empresa.id]">{{ frente.empresa.nombre }}</a></p>
 
 <h2>Catálogo de Conceptos</h2>
 <table class="table">
@@ -32,5 +32,5 @@
   </tbody>
 </table>
 
-<a [routerLink]="['/registro/catalogo', frente.id]" class="btn btn-primary">Editar Catálogo de Conceptos</a>
+<a [routerLink]="['/registro-catalogo', frente.id]" class="btn btn-primary">Editar Catálogo de Conceptos</a>
 <a [routerLink]="['/proyecto', frente.proyecto.id, 'frente', frente.id, 'estimacion']" class="btn btn-outline-success">Estimación</a>

@@ -11,7 +11,7 @@ import { FormularioProyectoComponent } from './components/formulario-proyecto/fo
 import { FrentesObraComponent } from './components/frentes-obra/frentes-obra.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { RegistroCatalogoComponent } from './components/registro-catalogo/registro-catalogo.component';
-import { RegistroEmpresasComponent } from './components/registro-empresas/registro-empresas.component';
+import { RegistroEmpresaComponent } from './components/registro-empresa/registro-empresa.component';
 import { RegistroProyectoComponent } from './components/registro-proyecto/registro-proyecto.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { EstimacionServiciosComponent } from './components/estimacion-servicios/estimacion-servicios.component';
@@ -30,10 +30,10 @@ import { BaseComponent } from './components/base/base.component';
 
 import { CatalogoService } from './services/catalogo.service';
 import { EmpresaService } from './services/empresa.service';
-import {ProyectoService} from "./services/proyecto.service";
-import {EstimacionService} from "./services/estimacion.service";
+import { ProyectoService } from "./services/proyecto.service";
+import { EstimacionService } from "./services/estimacion.service";
 import { FrenteService } from "./services/frente.service";
-import {ProyectoDetailComponent} from "./components/proyecto-detail/proyecto-detail.component";
+import { ProyectoDetailComponent } from "./components/proyecto-detail/proyecto-detail.component";
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import {ProyectoDetailComponent} from "./components/proyecto-detail/proyecto-det
     ProyectosComponent,
     ProyectoDetailComponent,
     RegistroCatalogoComponent,
-    RegistroEmpresasComponent,
+    RegistroEmpresaComponent,
     RegistroProyectoComponent,
     NavbarComponent,
     EstimacionServiciosComponent,

@@ -1,5 +1,6 @@
 import { Proyecto } from './proyecto.model';
 import { Empresa } from './empresa.model';
+import { Catalogo } from './catalogo.model';
 
 export class Frente {
   id: number;
@@ -12,6 +13,7 @@ export class Frente {
   empresa_id: number;
   proyecto: Proyecto;
   empresa: Empresa;
+  catalogos_relacionados: Catalogo[];
 
   constructor() {
     this.id = 0;
@@ -24,5 +26,6 @@ export class Frente {
     this.empresa_id = 0;
     this.proyecto = new Proyecto();
     this.empresa = new Empresa();
+    this.catalogos_relacionados = [];
   }
 }

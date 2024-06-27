@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProyectoService } from 'src/app/services/proyecto.service';
 import { EmpresaService } from 'src/app/services/empresa.service';
+import { FrenteService } from 'src/app/services/frente.service';
+import { Frente } from 'src/app/models/frente.model';
 
 @Component({
   selector: 'app-frentes-obra',
@@ -12,10 +14,12 @@ import { EmpresaService } from 'src/app/services/empresa.service';
 export class FrentesObraComponent implements OnInit {
   proyectos: any[] = [];
   empresas: any[] = [];
+  frente: Frente = new Frente();
 
   constructor(
     private proyectoService: ProyectoService,
     private empresaService: EmpresaService,
+    private frenteService: FrenteService,
     private router: Router
   ) { }
 
@@ -38,9 +42,8 @@ export class FrentesObraComponent implements OnInit {
 
   onSubmit(form: NgForm): void {
     // Handle form submission
-    console.log(form.value);
-    // Perform necessary actions, e.g., save the form data to the database
-    // After saving, navigate to the desired route
-    this.router.navigate(['/some-route']);
+    this.frenteService.createFrente(this.frente).subscribe(() => {
+      this.router.navigate(['/frentes']);
+    });
   }
 }

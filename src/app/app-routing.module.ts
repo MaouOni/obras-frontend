@@ -6,26 +6,28 @@ import { FormularioProyectoComponent } from './components/formulario-proyecto/fo
 import { FrentesObraComponent } from './components/frentes-obra/frentes-obra.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProyectoDetailComponent } from './components/proyecto-detail/proyecto-detail.component';
-import { ProyectoListComponent } from './components/proyecto-list/proyecto-list.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { RegistroCatalogoComponent } from './components/registro-catalogo/registro-catalogo.component';
-import { RegistroEmpresasComponent } from './components/registro-empresas/registro-empresas.component';
+import { RegistroEmpresaComponent } from './components/registro-empresa/registro-empresa.component';
 import { RegistroProyectoComponent } from './components/registro-proyecto/registro-proyecto.component';
 import { FrenteDetailComponent } from './components/frente-detail/frente-detail.component';
 import { EditEmpresasComponent } from './components/edit-empresas/edit-empresas.component';
 import { EditFrentesComponent } from './components/edit-frentes/edit-frentes.component';
 import { EditProyectosComponent } from './components/edit-proyectos/edit-proyectos.component';
+import { IndexComponent } from "./components/index/index.component";
 
 const routes: Routes = [
-  { path: '', component: ProyectoListComponent },
+  { path: '', redirectTo: '/index', pathMatch: 'full' },
+  { path: 'index', component: IndexComponent },
+  { path: 'proyectos', component: ProyectosComponent },
   { path: 'empresas', component: EmpresasComponent },
   { path: 'estimacion', component: EstimacionComponent },
   { path: 'formulario-proyecto', component: FormularioProyectoComponent },
-  { path: 'frentes-obra', component: FrentesObraComponent },
+  { path: 'frentes', component: FrentesObraComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'proyecto/detalles/:id', component: ProyectoDetailComponent },
-  { path: 'registro-catalogo', component: RegistroCatalogoComponent },
-  { path: 'registro-empresas', component: RegistroEmpresasComponent },
+  { path: 'registro-catalogo/:id', component: RegistroCatalogoComponent },
+  { path: 'registro-empresa', component: RegistroEmpresaComponent },
   { path: 'registro-proyecto', component: RegistroProyectoComponent },
   { path: 'frente/detalle/:id', component: FrenteDetailComponent },
   { path: 'empresas/editar/:id', component: EditEmpresasComponent },
