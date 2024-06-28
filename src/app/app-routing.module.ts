@@ -15,23 +15,25 @@ import { EditEmpresasComponent } from './components/edit-empresas/edit-empresas.
 import { EditFrentesComponent } from './components/edit-frentes/edit-frentes.component';
 import { EditProyectosComponent } from './components/edit-proyectos/edit-proyectos.component';
 import { IndexComponent } from "./components/index/index.component";
+import { EstimacionServiciosComponent } from "./components/estimacion-servicios/estimacion-servicios.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'index', component: IndexComponent },
   { path: 'proyectos', component: ProyectosComponent },
   { path: 'empresas', component: EmpresasComponent },
-  { path: 'estimacion', component: EstimacionComponent },
+  { path: 'proyecto/:proyectoId/frente/:frenteId/estimacion', component: EstimacionComponent },
+  { path: 'proyecto/:proyectoId/frente/:frenteId/estimacion/estimacion-servicios', component: EstimacionServiciosComponent },
   { path: 'formulario-proyecto', component: FormularioProyectoComponent },
   { path: 'frentes', component: FrentesObraComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'proyecto/detalles/:id', component: ProyectoDetailComponent },
-  { path: 'registro-catalogo/:id', component: RegistroCatalogoComponent },
+  { path: 'registro-catalogo/:frenteId', component: RegistroCatalogoComponent },
   { path: 'registro-empresa', component: RegistroEmpresaComponent },
   { path: 'registro-proyecto', component: RegistroProyectoComponent },
-  { path: 'frente/detalle/:id', component: FrenteDetailComponent },
+  { path: 'proyecto/:proyectoId/frente/:id', component: FrenteDetailComponent },
   { path: 'empresas/editar/:id', component: EditEmpresasComponent },
-  { path: 'proyecto/detalles/:proyectoId/frente/:id/editar', component: EditFrentesComponent },
+  { path: 'proyecto/:proyectoId/frente/:id/editar', component: EditFrentesComponent },
   { path: 'proyecto/editar/:id', component: EditProyectosComponent },
 ];
 

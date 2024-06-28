@@ -14,6 +14,7 @@ export class Frente {
   proyecto: Proyecto;
   empresa: Empresa;
   catalogos_relacionados: Catalogo[];
+  importe: number; // New field
 
   constructor() {
     this.id = 0;
@@ -27,5 +28,6 @@ export class Frente {
     this.proyecto = new Proyecto();
     this.empresa = new Empresa();
     this.catalogos_relacionados = [];
+    this.importe = 0;
   }
 }

@@ -1,14 +1,18 @@
 <h1>{{ proyecto.nombre }}</h1>
 <p>{{ proyecto.descripcion }}</p>
-<p>Fecha de inicio: {{ proyecto.fecha_inicio | date }}</p>
-<p>Fecha final: {{ proyecto.fecha_final | date }}</p>
+<p>Fecha de inicio: {{ proyecto.fecha_inicio | date: 'shortDate' }}</p>
+<p>Fecha final: {{ proyecto.fecha_final | date: 'shortDate' }}</p>
 
 <h2>Frentes de obra</h2>
-<ul>
-  <li *ngFor="let frente of proyecto.frentes">
-    <a [routerLink]="['/proyecto/detalles', proyecto.id, 'frente', frente.id]">{{ frente.nombre }}</a>
-    <a [routerLink]="['/proyecto/detalles', proyecto.id, 'frente', frente.id, 'editar']" class="btn btn-primary btn-sm">Editar</a>
+<ul class="list-group">
+  <li *ngFor="let frente of proyecto.frentes" class="list-group-item d-flex justify-content-between align-items-center">
+    <div>
+      <a [routerLink]="['/proyecto', proyecto.id, 'frente', frente.id]">{{ frente.nombre }}</a>
+    </div>
+    <div>
+      <a [routerLink]="['/proyecto', proyecto.id, 'frente', frente.id, 'editar']" class="btn btn-outline-warning btn-sm">Editar</a>
+    </div>
   </li>
 </ul>
 
-<a routerLink="/frentes" class="btn btn-primary">Agregar frente de obra</a>
+<a routerLink="/frentes" class="btn btn-primary mt-3">Registrar Frente de Obra</a>

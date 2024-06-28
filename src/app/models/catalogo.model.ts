@@ -1,5 +1,3 @@
-import { Frente } from './frente.model';
-
 export class Catalogo {
   id: number;
   clave: string;
@@ -8,9 +6,14 @@ export class Catalogo {
   unidad: string;
   costo_unitario: number;
   cantidad: number;
-  importe: number;
   frente_id: number;
-  frente: Frente;
+  segunProyecto: number;
+  hastaEstimacionAnterior: number;
+  deEstaEstimacion: number;
+  totalEstimado: number;
+  porEjecutar: number;
+  precioUnitario: number;
+  importe: number;
 
   constructor() {
     this.id = 0;
@@ -20,8 +23,13 @@ export class Catalogo {
     this.unidad = '';
     this.costo_unitario = 0;
     this.cantidad = 0;
-    this.importe = 0;
     this.frente_id = 0;
-    this.frente = new Frente();
+    this.segunProyecto = 0;
+    this.hastaEstimacionAnterior = 0;
+    this.deEstaEstimacion = 0;
+    this.totalEstimado = 0;
+    this.porEjecutar = 0;
+    this.precioUnitario = 0;
+    this.importe = 0;
   }
 }

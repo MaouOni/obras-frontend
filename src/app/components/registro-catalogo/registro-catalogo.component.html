@@ -1,46 +1,33 @@
-<style>
-  /* CSS to hide the number input arrows */
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  input[type="number"] {
-    -moz-appearance: textfield;
-  }
-</style>
-
 <h1>Nombre del frente: {{ frente.nombre }}</h1>
-<form (ngSubmit)="onSubmit()" #catalogoForm="ngForm">
-  <table>
-    <tr>
-      <td><label for="clave">Clave del concepto:</label></td>
-      <td><input type="text" id="clave" name="clave" pattern="E0\\d{1}-\\d{3}" ngModel required></td>
-    </tr>
-    <tr>
-      <td><label for="nombre">Nombre del concepto:</label></td>
-      <td><input type="text" id="nombre" name="nombre" maxlength="10" ngModel required></td>
-    </tr>
-    <tr>
-      <td><label for="descripcion">Descripción:</label></td>
-      <td><textarea id="descripcion" name="descripcion" maxlength="70" ngModel required></textarea></td>
-    </tr>
-    <tr>
-      <td><label for="unidad">Unidad:</label></td>
-      <td><input type="text" id="unidad" name="unidad" maxlength="5" ngModel required></td>
-    </tr>
-    <tr>
-      <td><label for="costo">Costo Unitario:</label></td>
-      <td><input type="number" id="costo" name="costo" step="0.01" ngModel required></td>
-    </tr>
-    <tr>
-      <td><label for="cantidad">Cantidad:</label></td>
-      <td><input type="number" id="cantidad" name="cantidad" step="1" ngModel required></td>
-    </tr>
-  </table>
+<form (ngSubmit)="onSubmit(catalogoForm)" #catalogoForm="ngForm">
 
-  <input type="hidden" name="frente_id" [value]="frente.id" ngModel>
-  <!-- Este campo oculto guarda el ID del frente de obra asociado -->
+  <div class="form-group">
+    <label for="clave">Clave del concepto:</label>
+    <input type="text" id="clave" name="clave" class="form-control" [(ngModel)]="catalogo.clave" pattern="E0\\d{1}-\\d{3}" required>
+  </div>
+  <div class="form-group">
+    <label for="nombre">Nombre del concepto:</label>
+    <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="catalogo.nombre" maxlength="10" required>
+  </div>
+  <div class="form-group">
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" name="descripcion" class="form-control" [(ngModel)]="catalogo.descripcion" maxlength="70" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="unidad">Unidad:</label>
+    <input type="text" id="unidad" name="unidad" class="form-control" [(ngModel)]="catalogo.unidad" maxlength="5" required>
+  </div>
+  <div class="form-group">
+    <label for="costo">Costo Unitario:</label>
+    <input type="number" id="costo" name="costo" class="form-control" [(ngModel)]="catalogo.costo_unitario" step="0.01" required>
+  </div>
+  <div class="form-group">
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" id="cantidad" name="cantidad" class="form-control" [(ngModel)]="catalogo.cantidad" step="1" required>
+  </div>
+  <div class="form-group">
+    <input type="hidden" name="frente_id" class="form-control" [(ngModel)]="catalogo.frente_id" [value]="frente.id">
+  </div>
 
-  <button type="submit" mat-raised-button color="primary">Registrar catálogo</button>
+  <button type="submit" class="btn btn-primary mt-3">Registrar Catálogo</button>
 </form>

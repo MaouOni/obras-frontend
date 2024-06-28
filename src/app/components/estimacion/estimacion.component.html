@@ -2,14 +2,14 @@
   <table class="table table-bordered">
     <tr>
       <td colspan="2">
-        <h2>
-          NOMBRE DE LA DEPENDENCIA RESPONSABLE DEL PROYECTO DE INFRAESTRUCTURA:
-        </h2>
+        <h2>NOMBRE DE LA DEPENDENCIA RESPONSABLE DEL PROYECTO DE INFRAESTRUCTURA:</h2>
       </td>
       <td>
-        <h2>{{ frente.empresa.nombre }}</h2>
+        <h2>{{ frente.empresa?.nombre }}</h2>
       </td>
-      <td>FECHA: {{ fecha }}</td>
+      <td>
+        <h3>FECHA: {{ fecha }}</h3>
+      </td>
     </tr>
   </table>
 
@@ -23,39 +23,20 @@
       <td>NÚMERO DEL CONTRATO:</td>
       <td>{{ frente.no_contrato }}</td>
       <td>RAZÓN SOCIAL:</td>
-      <td>{{ razon_social }}</td>
+      <td>{{ frente.empresa?.razon_social }}</td>
       <td>NÚMERO:</td>
       <td>
-        <div class="form-group">
-          <input
-            type="number"
-            class="form-control"
-            id="numero_estimacion"
-            name="numero_estimacion"
-            ngModel
-            required
-          />
-        </div>
+        <input type="number" class="form-control read-only" id="numero_estimacion" name="numero_estimacion" [(ngModel)]="numeroEstimacion" readonly />
       </td>
     </tr>
     <tr>
       <td>FECHA DEL CONTRATO:</td>
-      <td>{{ frente.fecha_inicio }}</td>
+      <td>{{ frente.fecha_inicio | date: 'shortDate' }}</td>
       <td>REGISTRO FEDERAL DE CONTRIBUYENTES (RFC):</td>
-      <td>{{ frente.empresa.rfc }}</td>
+      <td>{{ frente.empresa?.rfc }}</td>
       <td>PERIODO:</td>
       <td>
-        <div class="form-group">
-          <label for="periodo">periodo:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="periodo"
-            name="periodo"
-            ngModel
-            required
-          />
-        </div>
+        <input type="text" class="form-control" id="periodo" name="periodo" [(ngModel)]="estimacion.periodo" required />
       </td>
     </tr>
   </table>
@@ -68,41 +49,49 @@
     </tr>
     <tr>
       <td>IMPORTE DEL CONTRATO:</td>
-      <td>${{ importe_contrato }}</td>
+      <td>
+        <input type="number" class="form-control read-only" [(ngModel)]="estimacion.importe_contrato" name="importe_contrato" readonly />
+      </td>
       <td>100.0000%</td>
     </tr>
     <tr>
       <td>IMPORTE ESTIMADO ACUMULADO ANTERIOR:</td>
-      <td>${{ importe_estimado_acumulado_anterior }}</td>
-      <td>0.00000%</td>
+      <td>
+        <input type="number" class="form-control read-only" [(ngModel)]="estimacion.importe_estimado_acum_anterior" name="importe_estimado_acum_anterior" readonly />
+      </td>
+      <td>{{ porcentajeEstimadoAcumAnterior | number: '1.5-5' }}%</td>
     </tr>
     <tr>
       <td>IMPORTE DE LA ESTIMACIÓN ACTUAL:</td>
       <td>
-        <div class="form-group">
-          <input
-            type="number"
-            class="form-control"
-            id="importe_estimado_actual"
-            name="importe_estimado_actual"
-            ngModel
-            required
-          />
-        </div>
+        <input type="number" class="form-control read-only" id="importe_estimado_actual" name="importe_estimado_actual" [(ngModel)]="estimacion.importe_estimado_actual" readonly />
       </td>
-      <td>1.19314%</td>
+      <td>{{ porcentajeEstimadoActual | number: '1.5-5' }}%</td>
     </tr>
     <tr>
       <td>IMPORTE ESTIMADO ACUMULADO ACTUAL:</td>
-      <td>${{ importe_estimado_acum_actual }}</td>
-      <td>1.19314%</td>
+      <td>
+        <input type="number" class="form-control read-only" [(ngModel)]="estimacion.importe_estimado_acum_actual" name="importe_estimado_acum_actual" readonly />
+      </td>
+      <td>{{ porcentajeEstimadoAcumActual | number: '1.5-5' }}%</td>
     </tr>
     <tr>
-      <td>SALDO POR ESTIMAR</td>
-      <td>${{ saldo_por_estimar }}</td>
-      <td>98.8069%</td>
+      <td>SALDO POR ESTIMAR:</td>
+      <td>
+        <input type="number" class="form-control read-only" [(ngModel)]="estimacion.saldo_por_estimar" name="saldo_por_estimar" readonly />
+      </td>
+      <td>{{ porcentajeSaldoPorEstimar | number: '1.5-5' }}%</td>
     </tr>
   </table>
-  <button type="submit">Registrar Estimación</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!estimacion.periodo || !estimacion.importe_estimado_actual">Registrar Estimación</button>
 </form>
-<a [routerLink]="['/estimacion_servicios', proyecto.id, frente.id]" class="btn btn-primary">Agregar la Estimación de Servicios Ejecutados</a>
+<a [routerLink]="['estimacion-servicios']" class="btn btn-primary mt-3">Agregar la Estimación de Servicios Ejecutados</a>
+
+<style>
+  .read-only {
+    border: none !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    font-size: 14px;
+  }
+</style>

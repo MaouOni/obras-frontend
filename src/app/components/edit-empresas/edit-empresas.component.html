@@ -1,6 +1,6 @@
-<h1>Editar datos de Empresas Asociadas</h1>
+<h1 class="text-center mb-4">Editar datos de Empresas Asociadas</h1>
 
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" class="mx-auto" style="max-width: 600px;">
   <div class="form-group">
     <label for="nombre">Nombre de la empresa:</label>
     <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="empresa.nombre" required>
@@ -26,5 +26,7 @@
     <input type="text" id="cmic" name="cmic" class="form-control" [(ngModel)]="empresa.cmic" required>
   </div>
 
-  <input type="submit" name="accion" value="Actualizar empresa" class="btn btn-primary">
+  <div class="text-center">
+    <input type="submit" name="accion" value="Actualizar Empresa" class="btn btn-primary">
+  </div>
 </form>

@@ -22,4 +22,12 @@ export class EstimacionService {
   createEstimacion(estimacion: Estimacion): Observable<Estimacion> {
     return this.http.post<Estimacion>(this.apiUrl, estimacion);
   }
+
+  getEstimacionesByFrenteId(frenteId: number): Observable<Estimacion[]> {
+    return this.http.get<Estimacion[]>(`${this.apiUrl}/frente/${frenteId}`);
+  }
+
+  setImporteEstimadoActual(importe: number): void {
+    // Implementation for setting the importe estimado actual
+  }
 }

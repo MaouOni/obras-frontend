@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CatalogoService } from 'src/app/services/catalogo.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-registro-catalogo',
@@ -9,6 +10,7 @@ import { CatalogoService } from 'src/app/services/catalogo.service';
 })
 export class RegistroCatalogoComponent implements OnInit {
   frente: any = {}; // Initialize as empty object to hold frente data
+  catalogo: any = {}; // Initialize as empty object to hold catalogo data
 
   constructor(
     private route: ActivatedRoute,
@@ -22,15 +24,16 @@ export class RegistroCatalogoComponent implements OnInit {
   }
 
   loadFrente(frenteId: string | null): void {
-    // Replace with actual service call to fetch frente data
-    this.catalogoService.getFrente(frenteId).subscribe(data => {
-      this.frente = data;
-    });
+    if (frenteId) {
+      this.catalogoService.getFrente(frenteId).subscribe(data => {
+        this.frente = data;
+        this.catalogo.frente_id = this.frente.id; // Set frente_id for catalogo
+      });
+    }
   }
 
-  onSubmit(): void {
-    // Handle form submission
-    this.catalogoService.createCatalogo(this.frente.id).subscribe(() => {
+  onSubmit(form: NgForm): void {
+    this.catalogoService.createCatalogo(this.catalogo).subscribe(() => {
       this.router.navigate(['/frentes']); // Adjust the route as needed
     });
   }

@@ -15,11 +15,11 @@
       <td>{{ proyecto.descripcion }}</td>
       <td>{{ proyecto.fecha_inicio }}</td>
       <td>{{ proyecto.fecha_final }}</td>
-      <td><a [routerLink]="['/proyecto/detalles', proyecto.id]" class="btn btn-outline-warning btn-sm">Detalles</a></td>
-      <td><a [routerLink]="['/proyecto/editar', proyecto.id]" class="btn btn-danger btn-sm">Editar</a></td>
+      <td><a [routerLink]="['/proyecto/detalles', proyecto.id]" class="btn btn-outline-success btn-sm">Detalles</a></td>
+      <td><a [routerLink]="['/proyecto/editar', proyecto.id]" class="btn btn-outline-warning btn-sm">Editar</a></td>
       <td><button (click)="deleteProyecto(proyecto.id)" class="btn btn-danger btn-sm">Eliminar</button></td>
     </tr>
     </tbody>
   </table>
-  <a routerLink="/registro-proyecto" class="btn btn-primary" id="searchButton">Crear proyecto</a>
+  <a routerLink="/registro-proyecto" class="btn btn-primary" id="searchButton">Registrar proyecto</a>
 </div>
