@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class EstimacionService {
   private apiUrl = `${environment.apiUrl}/api/estimaciones`;
+  private importeEstimadoActual: number = 0;
 
   constructor(private http: HttpClient) { }
 
@@ -29,6 +30,13 @@ export class EstimacionService {
   }
 
   setImporteEstimadoActual(importe: number): void {
-    // Implementation for setting the importe estimado actual
+    this.importeEstimadoActual = importe;
+  }
+
+  getImporteEstimadoActual(): Observable<number> {
+    return new Observable(observer => {
+      observer.next(this.importeEstimadoActual);
+      observer.complete();
+    });
   }
 }

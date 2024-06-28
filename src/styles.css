@@ -1,0 +1,9 @@
+.table-responsive {
+  overflow-x: auto;
+}
+
+.read-only {
+  background-color: #f8f9fa !important;
+  border: none;
+  pointer-events: none;
+}

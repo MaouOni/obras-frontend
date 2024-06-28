@@ -36,6 +36,7 @@ export class EstimacionComponent implements OnInit {
     this.loadFrente(frenteId);
     this.estimacion.frente_id = frenteId;
     this.loadNumeroEstimacion(frenteId);
+    this.loadImporteEstimadoActual();
   }
 
   loadFrente(frenteId: number): void {
@@ -57,6 +58,13 @@ export class EstimacionComponent implements OnInit {
       } else {
         this.estimacion.importe_estimado_acum_anterior = 0;
       }
+      this.updateCalculations();
+    });
+  }
+
+  loadImporteEstimadoActual(): void {
+    this.estimacionService.getImporteEstimadoActual().subscribe((importe: number) => {
+      this.estimacion.importe_estimado_actual = importe;
       this.updateCalculations();
     });
   }
