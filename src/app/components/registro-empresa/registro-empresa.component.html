@@ -1,6 +1,6 @@
-<h1>Registro Empresas Asociadas</h1>
+<h1 class="text-center mb-4">Registro Empresas Asociadas</h1>
 
-<form (ngSubmit)="onSubmit()" #empresaForm="ngForm">
+<form (ngSubmit)="onSubmit()" #empresaForm="ngForm" class="mx-auto" style="max-width: 600px;">
   <div class="form-group">
     <label for="nombre">Nombre de la empresa:</label>
     <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="empresa.nombre" required>
@@ -26,5 +26,7 @@
     <input type="text" id="cmic" name="cmic" class="form-control" [(ngModel)]="empresa.cmic" required>
   </div>
 
-  <button type="submit" class="btn btn-primary">Registrar Empresa</button>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary">Registrar Empresa</button>
+  </div>
 </form>

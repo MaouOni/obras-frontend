@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Proyecto } from '../models/proyecto.model';
 
@@ -9,7 +9,7 @@ import { Proyecto } from '../models/proyecto.model';
 export class ProyectoService {
   private apiUrl = 'http://localhost:3000/api/proyectos';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getProyectos(): Observable<Proyecto[]> {
     return this.http.get<Proyecto[]>(this.apiUrl);
@@ -27,7 +27,7 @@ export class ProyectoService {
     return this.http.put<Proyecto>(`${this.apiUrl}/${id}`, proyecto);
   }
 
-  deleteProyecto(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  deleteProyecto(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

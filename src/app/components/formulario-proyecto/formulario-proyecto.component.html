@@ -1,9 +1,11 @@
-<h1>Registro o Consulta de Proyecto</h1>
+<h1 class="text-center mb-4">Registro o Consulta de Proyecto</h1>
 
-<form>
-  <label for="txtNombre">¿Qué desea hacer?</label>
+<form class="text-center mx-auto" style="max-width: 500px;">
+  <label for="txtNombre" class="form-label">¿Qué desea hacer?</label>
   <br>
-  <button class="btn btn-primary" (click)="navigateTo('registroProyecto')">Registrar</button>
-  <button class="btn btn-primary" (click)="navigateTo('consultar')">Consultar</button>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-primary mx-1" (click)="navigateTo('registroProyecto')">Registrar</button>
+    <button type="button" class="btn btn-primary mx-1" (click)="navigateTo('consultar')">Consultar</button>
+  </div>
   <br>
 </form>

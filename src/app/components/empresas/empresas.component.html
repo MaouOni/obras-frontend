@@ -1,13 +1,15 @@
-<h1>Empresas registradas</h1>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
+<h1 class="text-center mb-4">Empresas Registradas</h1>
+
+<div class="table-responsive mx-auto" style="max-width: 800px;">
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
     <tr>
       <th>Nombre</th>
       <th>Razón social</th>
       <th>RFC</th>
       <th>Número de registro IVA</th>
       <th>Número de registro CMIC</th>
+      <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
@@ -17,9 +19,13 @@
       <td>{{ empresa.rfc }}</td>
       <td>{{ empresa.numero_iva }}</td>
       <td>{{ empresa.cmic }}</td>
-      <td><a [routerLink]="['/empresas/editar', empresa.id]" class="btn btn-outline-warning btn-sm">Editar</a></td>
+      <td>
+        <a [routerLink]="['/empresas/editar', empresa.id]" class="btn btn-outline-warning btn-sm">Editar</a>
+      </td>
     </tr>
     </tbody>
   </table>
-  <a routerLink="/registro-empresa" class="btn btn-primary">Registrar Empresa</a>
+  <div class="text-center">
+    <a routerLink="/registro-empresa" class="btn btn-primary mt-3">Registrar Empresa</a>
+  </div>
 </div>

@@ -1,5 +1,6 @@
-<h1>Registro de Proyecto</h1>
-<form (ngSubmit)="onSubmit()" #proyectoForm="ngForm">
+<h1 class="text-center mb-4">Registro de Proyecto</h1>
+
+<form (ngSubmit)="onSubmit()" #proyectoForm="ngForm" class="mx-auto" style="max-width: 600px;">
   <div class="form-group">
     <label for="nombre">Nombre del proyecto:</label>
     <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="proyecto.nombre" required>
@@ -20,5 +21,7 @@
     <input type="date" id="fecha_final" name="fecha_final" class="form-control" [(ngModel)]="proyecto.fecha_final" required>
   </div>
 
-  <button type="submit" class="btn btn-primary">Registrar Proyecto</button>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary">Registrar Proyecto</button>
+  </div>
 </form>

@@ -1,24 +1,29 @@
-<form (ngSubmit)="onSubmit()" #estimacionForm="ngForm">
+<h1 class="text-center mb-4">Registrar Estimación</h1>
+
+<form (ngSubmit)="onSubmit()" #estimacionForm="ngForm" class="mx-auto" style="max-width: 900px;">
   <table class="table table-bordered">
     <tr>
-      <td colspan="2">
-        <h2>NOMBRE DE LA DEPENDENCIA RESPONSABLE DEL PROYECTO DE INFRAESTRUCTURA:</h2>
-      </td>
-      <td>
-        <h2>{{ frente.empresa?.nombre }}</h2>
-      </td>
-      <td>
-        <h3>FECHA: {{ fecha }}</h3>
-      </td>
+      <th colspan="2">
+        <h4>NOMBRE DE LA DEPENDENCIA RESPONSABLE DEL PROYECTO DE INFRAESTRUCTURA:</h4>
+      </th>
+      <th>
+        <h4>{{ frente.empresa?.nombre }}</h4>
+      </th>
+      <th>
+        <h4>FECHA: {{ fecha }}</h4>
+      </th>
     </tr>
   </table>
 
   <table class="table table-bordered">
+    <thead>
     <tr>
       <th colspan="2" class="text-center">CONTRATO</th>
       <th colspan="2" class="text-center">CONTRATISTA</th>
       <th colspan="2" class="text-center">ESTIMACIÓN</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
       <td>NÚMERO DEL CONTRATO:</td>
       <td>{{ frente.no_contrato }}</td>
@@ -39,14 +44,18 @@
         <input type="text" class="form-control" id="periodo" name="periodo" [(ngModel)]="estimacion.periodo" required />
       </td>
     </tr>
+    </tbody>
   </table>
 
   <table class="table table-bordered">
+    <thead>
     <tr>
       <th>IMPORTES SIN INCLUIR I.V.A.</th>
       <th>IMPORTE</th>
       <th>PORCENTAJE</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
       <td>IMPORTE DEL CONTRATO:</td>
       <td>
@@ -82,16 +91,13 @@
       </td>
       <td>{{ porcentajeSaldoPorEstimar | number: '1.5-5' }}%</td>
     </tr>
+    </tbody>
   </table>
-  <button type="submit" class="btn btn-primary" [disabled]="!estimacion.periodo || !estimacion.importe_estimado_actual">Registrar Estimación</button>
-</form>
-<a [routerLink]="['estimacion-servicios']" class="btn btn-primary mt-3">Agregar la Estimación de Servicios Ejecutados</a>
 
-<style>
-  .read-only {
-    border: none !important;
-    background-color: transparent !important;
-    padding: 0 !important;
-    font-size: 14px;
-  }
-</style>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary" [disabled]="!estimacion.periodo || !estimacion.importe_estimado_actual">Registrar Estimación</button>
+  </div>
+</form>
+<div class="text-center mt-3">
+  <a [routerLink]="['estimacion-servicios']" class="btn btn-primary">Agregar la Estimación de Servicios Ejecutados</a>
+</div>

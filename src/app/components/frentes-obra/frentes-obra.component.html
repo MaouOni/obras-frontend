@@ -1,6 +1,6 @@
-<h1>Registro de frentes de obra</h1>
+<h1 class="text-center mb-4">Registro de Frentes de Obra</h1>
 
-<form (ngSubmit)="onSubmit()" #frenteForm="ngForm">
+<form (ngSubmit)="onSubmit(frenteForm)" #frenteForm="ngForm" class="mx-auto" style="max-width: 600px;">
   <div class="form-group">
     <label for="nombre">Nombre del frente:</label>
     <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="frente.nombre" required>
@@ -33,17 +33,19 @@
 
   <div class="form-group">
     <label for="proyecto_id">Proyecto asociado:</label>
-    <select name="proyecto_id" class="form-control" [(ngModel)]="frente.proyecto_id" required>
+    <select id="proyecto_id" name="proyecto_id" class="form-control" [(ngModel)]="frente.proyecto_id" required>
       <option *ngFor="let proyecto of proyectos" [value]="proyecto.id">{{ proyecto.nombre }}</option>
     </select>
   </div>
 
   <div class="form-group">
     <label for="empresa_asociada">Empresa asociada:</label>
-    <select name="empresa_asociada" class="form-control" [(ngModel)]="frente.empresa_id" required>
+    <select id="empresa_asociada" name="empresa_asociada" class="form-control" [(ngModel)]="frente.empresa_id" required>
       <option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.nombre }}</option>
     </select>
   </div>
 
-  <button type="submit" class="btn btn-primary">Registrar Frente</button>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary">Registrar Frente</button>
+  </div>
 </form>

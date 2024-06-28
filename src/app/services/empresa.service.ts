@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Empresa } from '../models/empresa.model';
 
@@ -9,7 +9,7 @@ import { Empresa } from '../models/empresa.model';
 export class EmpresaService {
   private apiUrl = 'http://localhost:3000/api/empresas';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getEmpresas(): Observable<Empresa[]> {
     return this.http.get<Empresa[]>(this.apiUrl);
@@ -27,7 +27,7 @@ export class EmpresaService {
     return this.http.put<Empresa>(`${this.apiUrl}/${id}`, empresa);
   }
 
-  deleteEmpresa(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  deleteEmpresa(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

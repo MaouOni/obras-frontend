@@ -1,8 +1,8 @@
-<h1>Estimación de Servicios Ejecutados</h1>
-<div>
-  <table>
+<h1 class="text-center mb-4">Estimación de Servicios Ejecutados</h1>
+<div class="table-responsive mx-auto" style="max-width: 1000px;">
+  <table class="table">
     <tr>
-      <td><input matInput [(ngModel)]="searchQuery" placeholder="Buscar"></td>
+      <td><input matInput [(ngModel)]="searchQuery" placeholder="Buscar" class="form-control"></td>
       <td><button class="btn btn-primary" (click)="search()">Buscar</button></td>
       <td><button class="btn btn-primary" (click)="showAll()">Mostrar todo</button></td>
       <td><button class="btn btn-primary" (click)="addRow()">+</button></td>
@@ -12,58 +12,50 @@
   </table>
 </div>
 <br>
-<table mat-table [dataSource]="filteredData" class="mat-elevation-z8 table table-bordered no-vertical-lines">
-  <ng-container matColumnDef="clave">
-    <th mat-header-cell *matHeaderCellDef> Clave Con. </th>
-    <td mat-cell *matCellDef="let element">
-      <input [(ngModel)]="element.clave" (change)="onClaveChange(element)" placeholder="Clave" class="form-control" />
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="nombre">
-    <th mat-header-cell *matHeaderCellDef> Concepto de Obra </th>
-    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-  </ng-container>
-  <ng-container matColumnDef="unidad">
-    <th mat-header-cell *matHeaderCellDef> Unidad </th>
-    <td mat-cell *matCellDef="let element"> {{element.unidad}} </td>
-  </ng-container>
-  <ng-container matColumnDef="cantidad">
-    <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-    <td mat-cell *matCellDef="let element">
-      <input [(ngModel)]="element.cantidad" (input)="updateTotal(element)" placeholder="Cantidad" class="form-control" />
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="hastaEstimacionAnterior">
-    <th mat-header-cell *matHeaderCellDef> Hasta Estimación Anterior </th>
-    <td mat-cell *matCellDef="let element"> {{element.hastaEstimacionAnterior}} </td>
-  </ng-container>
-  <ng-container matColumnDef="deEstaEstimacion">
-    <th mat-header-cell *matHeaderCellDef> De Esta Estimación </th>
-    <td mat-cell *matCellDef="let element">
-      <input [(ngModel)]="element.deEstaEstimacion" (input)="updateTotal(element)" placeholder="De Esta Estimación" class="form-control" />
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="importe">
-    <th mat-header-cell *matHeaderCellDef> Importe </th>
-    <td mat-cell *matCellDef="let element"> {{element.importe}} </td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  <tr>
-    <td colspan="3" class="text-right"><strong>Total:</strong></td>
-    <td>{{ totalCantidad }}</td>
-    <td></td>
-    <td>{{ totalImporte | currency }}</td>
-  </tr>
-</table>
+<div class="table-responsive mx-auto" style="max-width: 1000px;">
+  <table mat-table [dataSource]="filteredData" class="mat-elevation-z8 table table-bordered no-vertical-lines">
+    <ng-container matColumnDef="clave">
+      <th mat-header-cell *matHeaderCellDef class="col-2"> Clave Con. </th>
+      <td mat-cell *matCellDef="let element" class="col-2">
+        <input [(ngModel)]="element.clave" (change)="onClaveChange(element)" placeholder="Clave" class="form-control" />
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef class="col-3"> Concepto de Obra </th>
+      <td mat-cell *matCellDef="let element" class="col-3"> {{element.nombre}} </td>
+    </ng-container>
+    <ng-container matColumnDef="unidad">
+      <th mat-header-cell *matHeaderCellDef class="col-2"> Unidad </th>
+      <td mat-cell *matCellDef="let element" class="col-2"> {{element.unidad}} </td>
+    </ng-container>
+    <ng-container matColumnDef="cantidad">
+      <th mat-header-cell *matHeaderCellDef class="col-1"> Cantidad </th>
+      <td mat-cell *matCellDef="let element" class="col-1">
+        <input [(ngModel)]="element.cantidad" (input)="updateTotal(element)" placeholder="Cantidad" class="form-control" />
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="hastaEstimacionAnterior">
+      <th mat-header-cell *matHeaderCellDef class="col-2"> Hasta Estimación Anterior </th>
+      <td mat-cell *matCellDef="let element" class="col-2"> {{element.hastaEstimacionAnterior}} </td>
+    </ng-container>
+    <ng-container matColumnDef="deEstaEstimacion">
+      <th mat-header-cell *matHeaderCellDef class="col-2"> De Esta Estimación </th>
+      <td mat-cell *matCellDef="let element" class="col-2">
+        <input [(ngModel)]="element.deEstaEstimacion" (input)="updateTotal(element)" placeholder="Precio" class="form-control" />
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="importe">
+      <th mat-header-cell *matHeaderCellDef class="col-2"> Importe </th>
+      <td mat-cell *matCellDef="let element" class="col-2"> {{element.importe}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr>
+      <td colspan="3" class="text-right"><strong>Total:</strong></td>
+      <td>{{ totalCantidad }}</td>
+      <td></td>
+      <td>{{ totalImporte | currency }}</td>
+    </tr>
+  </table>
+</div>
 
-<style>
-  .no-vertical-lines th, .no-vertical-lines td {
-    border-left: none !important;
-    border-right: none !important;
-  }
-  .form-control {
-    border: none !important;
-    padding: 0 !important;
-  }
-</style>

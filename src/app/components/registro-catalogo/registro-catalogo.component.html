@@ -1,5 +1,5 @@
-<h1>Nombre del frente: {{ frente.nombre }}</h1>
-<form (ngSubmit)="onSubmit(catalogoForm)" #catalogoForm="ngForm">
+<h1 class="text-center mb-4">Nombre del frente: {{ frente.nombre }}</h1>
+<form (ngSubmit)="onSubmit(catalogoForm)" #catalogoForm="ngForm" class="mx-auto" style="max-width: 600px;">
 
   <div class="form-group">
     <label for="clave">Clave del concepto:</label>
@@ -29,5 +29,7 @@
     <input type="hidden" name="frente_id" class="form-control" [(ngModel)]="catalogo.frente_id" [value]="frente.id">
   </div>
 
-  <button type="submit" class="btn btn-primary mt-3">Registrar Catálogo</button>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary mt-3">Registrar Catálogo</button>
+  </div>
 </form>

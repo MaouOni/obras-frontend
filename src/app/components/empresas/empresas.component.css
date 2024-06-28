@@ -1,0 +1,26 @@
+/* Add some padding and styling to the table */
+.table {
+  margin-top: 20px;
+}
+
+.table th, .table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table .btn {
+  padding: 5px 10px;
+}
+
+.text-center {
+  margin-top: 20px;
+}
+
+thead.thead-dark th {
+  background-color: #343a40;
+  color: white;
+}
+
+a.btn-primary {
+  margin-top: 20px;
+}

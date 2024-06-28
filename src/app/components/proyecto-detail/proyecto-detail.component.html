@@ -1,18 +1,22 @@
-<h1>{{ proyecto.nombre }}</h1>
-<p>{{ proyecto.descripcion }}</p>
-<p>Fecha de inicio: {{ proyecto.fecha_inicio | date: 'shortDate' }}</p>
-<p>Fecha final: {{ proyecto.fecha_final | date: 'shortDate' }}</p>
+<h1 class="text-center mb-4">{{ proyecto.nombre }}</h1>
+<p class="text-center px-3">{{ proyecto.descripcion }}</p>
+<p class="text-center px-3">Fecha de inicio: {{ proyecto.fecha_inicio | date: 'shortDate' }}</p>
+<p class="text-center px-3">Fecha final: {{ proyecto.fecha_final | date: 'shortDate' }}</p>
 
-<h2>Frentes de obra</h2>
-<ul class="list-group">
-  <li *ngFor="let frente of proyecto.frentes" class="list-group-item d-flex justify-content-between align-items-center">
-    <div>
-      <a [routerLink]="['/proyecto', proyecto.id, 'frente', frente.id]">{{ frente.nombre }}</a>
-    </div>
-    <div>
-      <a [routerLink]="['/proyecto', proyecto.id, 'frente', frente.id, 'editar']" class="btn btn-outline-warning btn-sm">Editar</a>
-    </div>
-  </li>
-</ul>
+<h2 class="text-center my-4">Frentes de obra</h2>
+<div class="table-responsive mx-auto" style="max-width: 800px;">
+  <ul class="list-group">
+    <li *ngFor="let frente of proyecto.frentes" class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <a [routerLink]="['/proyecto', proyecto.id, 'frente', frente.id]">{{ frente.nombre }}</a>
+      </div>
+      <div>
+        <a [routerLink]="['/proyecto', proyecto.id, 'frente', frente.id, 'editar']" class="btn btn-outline-warning btn-sm">Editar</a>
+      </div>
+    </li>
+  </ul>
 
-<a routerLink="/frentes" class="btn btn-primary mt-3">Registrar Frente de Obra</a>
+  <div class="text-center">
+    <a routerLink="/frentes" class="btn btn-primary mt-3">Registrar Frente de Obra</a>
+  </div>
+</div>

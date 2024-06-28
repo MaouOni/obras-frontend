@@ -1,6 +1,6 @@
-<h1>Editar frente de obra</h1>
+<h1 class="text-center mb-4">Editar Frente de Obra</h1>
 
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" class="mx-auto" style="max-width: 600px;">
   <div class="form-group">
     <label for="nombre">Nombre del frente:</label>
     <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="frente.nombre" required>
@@ -45,5 +45,7 @@
     </select>
   </div>
 
-  <input type="submit" name="accion" value="Actualizar Frente" class="btn btn-primary">
+  <div class="text-center">
+    <input type="submit" name="accion" value="Actualizar Frente" class="btn btn-primary">
+  </div>
 </form>

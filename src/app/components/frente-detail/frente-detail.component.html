@@ -1,39 +1,39 @@
-<h1>{{ frente.nombre }}</h1>
-<p>{{ frente.descripcion }}</p>
-<p>Fecha de inicio: {{ frente.fecha_inicio | date: 'shortDate' }}</p>
-<p>Fecha final: {{ frente.fecha_final | date: 'shortDate' }}</p>
-<p>Número de contrato: {{ frente.no_contrato }}</p>
-<p>Importe: {{ frente.importe | currency }}</p>
-<p>Proyecto asociado: <a [routerLink]="['/proyecto/detalles', frente.proyecto.id]">{{ frente.proyecto.nombre }}</a></p>
-<p>Empresa asociada: <a [routerLink]="['/empresas/editar', frente.empresa.id]">{{ frente.empresa.nombre }}</a></p>
+<h1 class="text-center mb-4">{{ frente.nombre }}</h1>
+<p class="text-center">{{ frente.descripcion }}</p>
+<p class="text-center">Fecha de inicio: {{ frente.fecha_inicio | date: 'shortDate' }}</p>
+<p class="text-center">Fecha final: {{ frente.fecha_final | date: 'shortDate' }}</p>
+<p class="text-center">Número de contrato: {{ frente.no_contrato }}</p>
+<p class="text-center">Importe: {{ frente.importe | currency }}</p>
+<p class="text-center">Proyecto asociado: <a [routerLink]="['/proyecto/detalles', frente.proyecto.id]">{{ frente.proyecto.nombre }}</a></p>
+<p class="text-center">Empresa asociada: <a [routerLink]="['/empresas/editar', frente.empresa.id]">{{ frente.empresa.nombre }}</a></p>
 
-<h2>Catálogo de Conceptos</h2>
-<table class="table">
-  <thead>
-  <tr>
-    <th>Clave</th>
-    <th>Nombre</th>
-    <th>Descripción</th>
-    <th>Unidad</th>
-    <th>Costo Unitario</th>
-    <th>Cantidad</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let concepto of frente.catalogos_relacionados">
-    <td>{{ concepto.clave }}</td>
-    <td>{{ concepto.nombre }}</td>
-    <td>{{ concepto.descripcion }}</td>
-    <td>{{ concepto.unidad }}</td>
-    <td>{{ concepto.costo_unitario }}</td>
-    <td>{{ concepto.cantidad }}</td>
-  </tr>
-  </tbody>
-</table>
-
-<div>
-  <a [routerLink]="['/registro-catalogo', frente.id]" class="btn btn-primary mt-3">Registrar Catálogo</a>
+<h2 class="text-center my-4">Catálogo de Conceptos</h2>
+<div class="table-responsive mx-auto" style="max-width: 1000px;">
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th>Clave</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Unidad</th>
+      <th>Costo Unitario</th>
+      <th>Cantidad</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let concepto of frente.catalogos_relacionados">
+      <td>{{ concepto.clave }}</td>
+      <td>{{ concepto.nombre }}</td>
+      <td>{{ concepto.descripcion }}</td>
+      <td>{{ concepto.unidad }}</td>
+      <td>{{ concepto.costo_unitario }}</td>
+      <td>{{ concepto.cantidad }}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
-<div>
+
+<div class="text-center">
+  <a [routerLink]="['/registro-catalogo', frente.id]" class="btn btn-primary mt-3">Registrar Catálogo</a>
   <a [routerLink]="['/proyecto', frente.proyecto.id, 'frente', frente.id, 'estimacion']" class="btn btn-outline-success mt-3">Estimación</a>
 </div>

@@ -5,6 +5,8 @@ import { ProyectoService } from 'src/app/services/proyecto.service';
 import { EmpresaService } from 'src/app/services/empresa.service';
 import { FrenteService } from 'src/app/services/frente.service';
 import { Frente } from 'src/app/models/frente.model';
+import { Proyecto } from 'src/app/models/proyecto.model';
+import { Empresa } from 'src/app/models/empresa.model';
 
 @Component({
   selector: 'app-frentes-obra',
@@ -12,8 +14,8 @@ import { Frente } from 'src/app/models/frente.model';
   styleUrls: ['./frentes-obra.component.css']
 })
 export class FrentesObraComponent implements OnInit {
-  proyectos: any[] = [];
-  empresas: any[] = [];
+  proyectos: Proyecto[] = [];
+  empresas: Empresa[] = [];
   frente: Frente = new Frente();
 
   constructor(
@@ -21,7 +23,7 @@ export class FrentesObraComponent implements OnInit {
     private empresaService: EmpresaService,
     private frenteService: FrenteService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.loadProyectos();
@@ -29,21 +31,22 @@ export class FrentesObraComponent implements OnInit {
   }
 
   loadProyectos(): void {
-    this.proyectoService.getProyectos().subscribe(data => {
+    this.proyectoService.getProyectos().subscribe((data: Proyecto[]) => {
       this.proyectos = data;
     });
   }
 
   loadEmpresas(): void {
-    this.empresaService.getEmpresas().subscribe(data => {
+    this.empresaService.getEmpresas().subscribe((data: Empresa[]) => {
       this.empresas = data;
     });
   }
 
   onSubmit(form: NgForm): void {
-    // Handle form submission
-    this.frenteService.createFrente(this.frente).subscribe(() => {
-      this.router.navigate(['/frentes']);
-    });
+    if (form.valid) {
+      this.frenteService.createFrente(this.frente).subscribe(() => {
+        this.router.navigate(['/frentes']);
+      });
+    }
   }
 }

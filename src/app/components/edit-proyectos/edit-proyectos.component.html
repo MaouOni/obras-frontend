@@ -1,6 +1,6 @@
-<h1>Editar Proyectos</h1>
+<h1 class="text-center mb-4">Editar Proyectos</h1>
 
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" class="mx-auto" style="max-width: 600px;">
   <div class="form-group">
     <label for="nombre">Nombre del proyecto:</label>
     <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="proyecto.nombre" required>
@@ -21,5 +21,7 @@
     <input type="date" id="fecha_final" name="fecha_final" class="form-control" [(ngModel)]="proyecto.fecha_final" required>
   </div>
 
-  <input type="submit" name="accion" value="Actualizar proyecto" class="btn btn-primary">
+  <div class="text-center">
+    <input type="submit" name="accion" value="Actualizar proyecto" class="btn btn-primary">
+  </div>
 </form>

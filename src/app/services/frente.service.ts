@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Frente } from '../models/frente.model';
 
@@ -27,7 +27,7 @@ export class FrenteService {
     return this.http.put<Frente>(`${this.apiUrl}/${id}`, frente);
   }
 
-  deleteFrente(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  deleteFrente(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

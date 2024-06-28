@@ -1,0 +1,26 @@
+.no-vertical-lines th, .no-vertical-lines td {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.form-control {
+  border: none !important;
+  padding: 0 !important;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #343a40;
+  color: white;
+}
+
+.table td {
+  white-space: nowrap;
+}
+
+.text-center {
+  margin-top: 20px;
+}

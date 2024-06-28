@@ -1,25 +1,31 @@
-<h1>Proyectos registrados</h1>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
+<h1 class="text-center mb-4">Proyectos Registrados</h1>
+
+<div class="table-responsive mx-auto" style="max-width: 800px;">
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
     <tr>
       <th>Nombre</th>
       <th>Descripción</th>
       <th>Fecha de inicio</th>
       <th>Fecha de fin</th>
+      <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let proyecto of proyectos">
       <td>{{ proyecto.nombre }}</td>
       <td>{{ proyecto.descripcion }}</td>
-      <td>{{ proyecto.fecha_inicio }}</td>
-      <td>{{ proyecto.fecha_final }}</td>
-      <td><a [routerLink]="['/proyecto/detalles', proyecto.id]" class="btn btn-outline-success btn-sm">Detalles</a></td>
-      <td><a [routerLink]="['/proyecto/editar', proyecto.id]" class="btn btn-outline-warning btn-sm">Editar</a></td>
-      <td><button (click)="deleteProyecto(proyecto.id)" class="btn btn-danger btn-sm">Eliminar</button></td>
+      <td>{{ proyecto.fecha_inicio | date: 'shortDate' }}</td>
+      <td>{{ proyecto.fecha_final | date: 'shortDate' }}</td>
+      <td>
+        <a [routerLink]="['/proyecto/detalles', proyecto.id]" class="btn btn-outline-success btn-sm mr-2">Detalles</a>
+        <a [routerLink]="['/proyecto/editar', proyecto.id]" class="btn btn-outline-warning btn-sm mr-2">Editar</a>
+        <button (click)="deleteProyecto(proyecto.id)" class="btn btn-danger btn-sm">Eliminar</button>
+      </td>
     </tr>
     </tbody>
   </table>
-  <a routerLink="/registro-proyecto" class="btn btn-primary" id="searchButton">Registrar proyecto</a>
+  <div class="text-center">
+    <a routerLink="/registro-proyecto" class="btn btn-primary mt-3" id="searchButton">Registrar Proyecto</a>
+  </div>
 </div>
