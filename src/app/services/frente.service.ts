@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Frente } from '../models/frente.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FrenteService {
-  private apiUrl = 'http://localhost:3000/api/frentes';
+  private apiUrl = `${environment.apiUrl}/api/frentes`;
 
   constructor(private http: HttpClient) {}
 

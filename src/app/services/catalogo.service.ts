@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Catalogo } from '../models/catalogo.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CatalogoService {
-  private apiUrl = 'http://localhost:3000/api/catalogos';
+  private apiUrl = `${environment.apiUrl}/api/catalogos`;
 
   constructor(private http: HttpClient) { }
 
@@ -28,9 +29,8 @@ export class CatalogoService {
   }
 
   getFrente(frenteId: string | null): Observable<any> {
-    return this.http.get<any>(`http://localhost:3000/api/frentes/${frenteId}`);
+    return this.http.get<any>(`${environment.apiUrl}/api/frentes/${frenteId}`);
   }
-
 
   getCatalogosByFrenteId(frenteId: number): Observable<Catalogo[]> {
     return this.http.get<Catalogo[]>(`${this.apiUrl}/frente/${frenteId}`);
