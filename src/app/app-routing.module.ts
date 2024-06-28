@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmpresasComponent } from './components/empresas/empresas.component';
 import { EstimacionComponent } from './components/estimacion/estimacion.component';
-import { FormularioProyectoComponent } from './components/formulario-proyecto/formulario-proyecto.component';
 import { FrentesObraComponent } from './components/frentes-obra/frentes-obra.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProyectoDetailComponent } from './components/proyecto-detail/proyecto-detail.component';
@@ -24,7 +23,6 @@ const routes: Routes = [
   { path: 'empresas', component: EmpresasComponent },
   { path: 'proyecto/:proyectoId/frente/:frenteId/estimacion', component: EstimacionComponent },
   { path: 'proyecto/:proyectoId/frente/:frenteId/estimacion/estimacion-servicios', component: EstimacionServiciosComponent },
-  { path: 'formulario-proyecto', component: FormularioProyectoComponent },
   { path: 'frentes', component: FrentesObraComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'proyecto/detalles/:id', component: ProyectoDetailComponent },

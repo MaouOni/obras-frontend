@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmpresasComponent } from './components/empresas/empresas.component';
 import { EstimacionComponent } from './components/estimacion/estimacion.component';
-import { FormularioProyectoComponent } from './components/formulario-proyecto/formulario-proyecto.component';
 import { FrentesObraComponent } from './components/frentes-obra/frentes-obra.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { RegistroCatalogoComponent } from './components/registro-catalogo/registro-catalogo.component';
@@ -26,7 +25,6 @@ import { EditFrentesComponent } from './components/edit-frentes/edit-frentes.com
 import { EditProyectosComponent } from './components/edit-proyectos/edit-proyectos.component';
 import { FrenteDetailComponent } from './components/frente-detail/frente-detail.component';
 import { IndexComponent } from './components/index/index.component';
-import { BaseComponent } from './components/base/base.component';
 
 import { CatalogoService } from './services/catalogo.service';
 import { EmpresaService } from './services/empresa.service';
@@ -40,7 +38,6 @@ import { ProyectoDetailComponent } from "./components/proyecto-detail/proyecto-d
     AppComponent,
     EmpresasComponent,
     EstimacionComponent,
-    FormularioProyectoComponent,
     FrentesObraComponent,
     ProyectosComponent,
     ProyectoDetailComponent,
@@ -54,7 +51,6 @@ import { ProyectoDetailComponent } from "./components/proyecto-detail/proyecto-d
     EditProyectosComponent,
     FrenteDetailComponent,
     IndexComponent,
-    BaseComponent
   ],
   imports: [
     BrowserModule,
